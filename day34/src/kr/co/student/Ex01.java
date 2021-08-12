@@ -2,7 +2,9 @@ package kr.co.student;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Choice;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.TextArea;
@@ -11,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
@@ -27,6 +30,7 @@ public class Ex01 extends JFrame {
 	oracle.jdbc.driver.OracleDriver driver=new OracleDriver();
 	String url="jdbc:oracle:thin:@localhost:1521:xe";
 	java.util.Properties info=new Properties();
+	Choice cho;
 
 	private JPanel contentPane;
 
@@ -63,7 +67,33 @@ public class Ex01 extends JFrame {
 		JPanel center = new JPanel();
 
 		Button addBtn=new Button("입력");
+		Button delBtn=new Button("삭제");
 		
+		delBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String num=cho.getSelectedItem();
+				String sql="delete from stu01 where num="+num;
+				Connection conn=null;
+				Statement stmt=null;
+				try {
+					conn=DriverManager.getConnection(url, info);
+					stmt=conn.createStatement();
+					stmt.executeUpdate(sql);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} finally{
+					try {
+						if(stmt!=null)stmt.close();
+						if(conn!=null)conn.close();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
+			}
+		});
 		addBtn.addActionListener(new ActionListener() {
 			
 			@Override
@@ -181,6 +211,40 @@ public class Ex01 extends JFrame {
 		top.add(button_1);
 		
 		JButton btnNewButton_2 = new JButton("\uC0AD\uC81C");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				center.removeAll();
+				center.setLayout(new FlowLayout());
+				cho=new Choice();
+				
+				String sql="select num from stu01";
+				
+				Connection conn=null;
+				Statement stmt=null;
+				ResultSet rs=null;
+				try {
+					conn=DriverManager.getConnection(url, info);
+					stmt=conn.createStatement();
+					rs=stmt.executeQuery(sql);
+					while(rs.next()){
+						cho.addItem(rs.getString(1));
+					}
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} finally{
+					try {
+						if(rs!=null)rs.close();
+						if(stmt!=null)stmt.close();
+						if(conn!=null)conn.close();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}
+				center.add(cho);
+				center.add(delBtn);
+				center.revalidate();
+			}
+		});
 		top.add(btnNewButton_2);
 		
 		JButton button = new JButton("\uC885\uB8CC");
