@@ -1,24 +1,32 @@
 package kr.co.student;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.EventQueue;
-import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Properties;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
 
 import oracle.jdbc.driver.OracleDriver;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.sql.SQLException;
-import java.util.Properties;
-
 public class Ex01 extends JFrame {
+	TextField[] tfs=new TextField[5];
+	oracle.jdbc.driver.OracleDriver driver=new OracleDriver();
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
+	java.util.Properties info=new Properties();
 
 	private JPanel contentPane;
 
@@ -44,9 +52,54 @@ public class Ex01 extends JFrame {
 	public Ex01() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+		
+		info.setProperty("user", "scott");
+		info.setProperty("password", "tiger");
+		for(int i=0; i<tfs.length; i++){
+			tfs[i]=new TextField();
+		}
 		contentPane = new JPanel();
 		JPanel top = new JPanel();
 		JPanel center = new JPanel();
+
+		Button addBtn=new Button("입력");
+		
+		addBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String num=tfs[0].getText();
+				String name=tfs[1].getText();
+				String kor=tfs[2].getText();
+				String eng=tfs[3].getText();
+				String math=tfs[4].getText();
+				
+				String sql="insert into stu01 values ("
+				+num+",'"+name+"',"+kor+","+eng+","+math+")";
+				
+				Connection conn=null;
+				Statement stmt=null;
+				try {
+					conn=DriverManager.getConnection(url, info);
+					stmt=conn.createStatement();
+					stmt.executeUpdate(sql);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} finally{
+					try {
+						if(stmt!=null)stmt.close();
+						if(conn!=null)conn.close();
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}
+				for(int i=0; i<tfs.length; i++){
+					tfs[i].setText("");
+					tfs[i].setText("");
+				}
+				
+			}
+		});
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -61,13 +114,7 @@ public class Ex01 extends JFrame {
 				center.removeAll();
 				TextArea ta=new TextArea();
 				
-				oracle.jdbc.driver.OracleDriver driver;
-				driver=new OracleDriver();
-				String url="jdbc:oracle:thin:@localhost:1521:xe";
-				java.util.Properties info;
-				info=new Properties();
-				info.setProperty("user", "scott");
-				info.setProperty("password", "tiger");
+				
 				
 				String sql="select num,name,kor,eng,math from stu01";
 				java.sql.Connection conn=null;
@@ -108,8 +155,26 @@ public class Ex01 extends JFrame {
 			}
 		});
 		top.add(btnNewButton);
-		
 		JButton btnNewButton_1 = new JButton("\uC785\uB825");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				center.removeAll();
+				center.setLayout(new GridLayout(6,2));
+				center.add(new Label("학번"));
+				center.add(tfs[0]);
+				center.add(new Label("이름"));
+				center.add(tfs[1]);
+				center.add(new Label("국어"));
+				center.add(tfs[2]);
+				center.add(new Label("영어"));
+				center.add(tfs[3]);
+				center.add(new Label("수학"));
+				center.add(tfs[4]);
+				center.add(new Label());
+				center.add(addBtn);
+				center.revalidate();
+			}
+		});
 		top.add(btnNewButton_1);
 		
 		JButton button_1 = new JButton("\uC218\uC815");
