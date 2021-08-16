@@ -7,9 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>page ≥ª¿Â∞¥√º</h1>
+	<h1>pageContext ≥ª¿Â∞¥√º</h1>
 	<%
-	System.out.println(page==this);
+		pageContext.getOut();
+		pageContext.getRequest();
+		pageContext.getResponse();
+		pageContext.getPage();
+		pageContext.getServletConfig();
+		pageContext.getServletContext();
 	%>
 </body>
 </html>

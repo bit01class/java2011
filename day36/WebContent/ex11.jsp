@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>page ≥ª¿Â∞¥√º</h1>
+	<h1>application ≥ª¿Â∞¥√º</h1>
 	<%
-	System.out.println(page==this);
+	String root=application.getContextPath();
 	%>
 </body>
 </html>

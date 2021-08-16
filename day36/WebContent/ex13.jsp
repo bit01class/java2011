@@ -7,9 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>page 내장객체</h1>
-	<%
-	System.out.println(page==this);
-	%>
+	<h1>구구단 출력</h1>
+	<table width="500" border="1">
+		<%
+		for(int j=1; j<10; j++){
+		out.println("<tr>");
+			for(int i=2; i<10; i++){
+			out.print("<td>"+i+"x"+j+"</td>");
+			} 
+		out.println("</tr>");
+		}
+		%>
+	</table>
 </body>
 </html>
+
+
+
+
+
