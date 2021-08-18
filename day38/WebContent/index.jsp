@@ -1,0 +1,63 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<!-- Save for Web Slices (Untitled-1) -->
+<table align="center" id="Table_01" width="800" height="601" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="3"  height="85">
+			<img src="images/index_01.jpg" width="231" height="85" alt=""></td>
+		<td colspan="4"></td>
+	</tr>
+	<tr>
+		<td height="56">
+		<img src="images/index_03.gif" width="119" height="56" alt=""></td>
+		<td height="56">
+			<a href="index.jsp"><img src="images/index_04.gif" width="99" height="56" alt=""></a></td>
+		<td height="56">
+			<img src="images/index_05.gif" width="107" height="56" alt=""></td>
+		<td height="56">
+			<a href="list.jsp"><img src="images/index_06.gif" width="126" height="56" alt=""></a></td>
+		<td height="56">
+			<img src="images/index_07.gif" width="136" height="56" alt=""></td>
+		<td height="56">
+			<img src="images/index_08.gif" width="109" height="56" alt=""></td>
+		<td height="56">
+			<img src="images/index_09.gif" width="104" height="56" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="7">
+			<!-- content start -->
+			<h3>IT교육 산업 핵심 리더<br> 더조은컴퓨터아카데미와
+대한민국 대표 온라인 고등 교육 메가스터디가 하나가 되었습니다!</h3>
+<p>IT교육의 선두주자 더조은컴퓨터아카데미와 대한민국 대표 온라인 고등 교육 메가스터디가 만나 이전에 없던 새로운 역사를 만들어냅니다.
+더조은컴퓨터아카데미는 다양한 컴퓨터 교육 서비스로 매년 수많은 취준생을 취업의 길로 이끌고 있으며
+메가스터디는 최고의 고등 교육 컨텐츠를 제공하여 수많은 학생의 대학 진학에 힘쓰고 있습니다.</p>
+
+<p>더조은컴퓨터아카데미는 메가스터디와 만나 탄탄한 지식과 체계를 통해 더욱 안정적이고 퀄리티 있는 교육을 제공하여
+수료생 여러분들의 취업과 자기발전을 위해 실무 중심의 커리큘럼에 집중하여 여러분들의 꿈을 이룰 수 있도록 최선을 다합니다.</p>
+
+<p>더조은컴퓨터아카데미는 웹디자인, 편집디자인, 건축, 인테리어디자인, 모바일 및 웹퍼블리셔 과정, 전산세무회계 등
+컴퓨터 분야의 전문화된 교육으로 운영하며 각 교육과정은 10년 이상의 실무경력을 가진 전문강사진으로 구성하여
+실무를 대비한 커리큘럼과 트렌드 및 미래 흐름까지 파악할 수 있는 대한민국 최고의 실무 인재 양성과정으로 인정받고 있습니다.</p>
+#더조은컴퓨터아카데미#취업준비#국비지원교육#실무중심교육#포트폴리오#무료교육#컴퓨터학원
+			<!-- content end -->
+		</td>
+	</tr>
+	<tr>
+		<td height="81" colspan="7" background="images/index_11.gif">
+			더조은컴퓨터아카데미<br>
+
+			대표번호1588.8748<br/>
+			&copy; THEJOEUN ACADEMY Corp.
+		</td>
+	</tr>
+</table>
+<!-- End Save for Web Slices -->
+</body>
+</html>
