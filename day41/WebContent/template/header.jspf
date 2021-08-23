@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+
+	<table width="100%">
+		<tr>
+			<td colspan="6">
+				<img alt="logo" src="<%=request.getContextPath() %>/imgs/logo.gif">
+			</td>
+		</tr>
+		<tr>
+			<td bgcolor="gray">&nbsp;</td>
+			<td bgcolor="gray" width="100" align="center"><a href="<%=request.getContextPath() %>/">[HOME]</a></td>
+			<td bgcolor="gray" width="100" align="center"><a href="<%=request.getContextPath() %>/intro.jsp">[INTRO]</a></td>
+			<td bgcolor="gray" width="100" align="center"><a href="<%=request.getContextPath() %>/bbs/list.jsp">[B B S]</a></td>
+			<td bgcolor="gray" width="100" align="center"><a href="<%=request.getContextPath() %>/login/form.jsp">[LOGIN]</a></td>
+			<td bgcolor="gray">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="6">
+<%
+request.setCharacterEncoding("euc-kr");
+String driver="oracle.jdbc.driver.OracleDriver";
+String url="jdbc:oracle:thin:@localhost:1522:xe";
+String user="scott";
+String password="tiger";
+
+Class.forName(driver);
+java.sql.Connection conn=null;
+java.sql.Statement stmt=null;
+java.sql.ResultSet rs=null;
+%>
+			<!-- centent start -->
